@@ -1,0 +1,70 @@
+﻿@model DernekOtomasyon.MVC.Models.NewsModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <style>
+        .liFlex li {
+            display: inline-flex;
+        }
+
+        .habericerik {
+            height: 300px;
+            overflow: scroll
+        }
+    </style>
+
+    <div class="liFlex">
+        <ul>
+            @foreach (var item in Model.CategoryList)
+            {
+                <li><a href="@Url.Action("CategoryNews", "Site", new { CategoryID= item.ID })">@item.CategoryName</a></li>
+            }
+
+        </ul>
+
+    </div>
+    <hr />
+
+    <div>
+        <h3>@Model.NewsDetail.Title</h3>
+        <h6>Eklenme: @Model.NewsDetail.InsertedDate</h6>
+        <div class="habericerik">
+            @Html.Raw(Model.NewsDetail.Content)
+        </div>
+
+    </div>
+
+    <hr />
+    <h1>Yorumlar</h1>
+    @foreach (var item in Model.CommentList)
+    {
+    <p>Adı: @item.Name</p>
+    <p>Yorum: @item.CommentText</p>
+    <hr />
+    }
+    
+    <form action="@Url.Action("YorumYap","Site")" method="post">
+        <input type="hidden" value="@Model.NewsDetail.ID" name="id" />
+        Adınız: <input name="name" placeholder="Adınız" /><br />
+        Yorumunuz: <textarea name="commenttext"></textarea>
+        <br />
+        <input type="submit"  value="Yorumla" />
+
+
+
+    </form>
+
+
+
+    </form>
+</body>
+</html>

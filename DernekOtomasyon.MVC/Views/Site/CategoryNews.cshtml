@@ -1,0 +1,48 @@
+﻿@model DernekOtomasyon.MVC.Models.NewsModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <style>
+        .liFlex li{
+            display: inline-flex;
+        }
+        .habericerik{ height:300px; overflow:scroll}
+    </style>
+
+    <div class="liFlex">
+        <ul>
+            @foreach (var item in Model.CategoryList)
+            {
+                <li><a href="@Url.Action("CategoryNews", "Site", new { CategoryID= item.ID })">@item.CategoryName</a></li>
+            }
+
+        </ul>
+
+    </div>
+    <hr />
+    @foreach (var item in Model.News)
+    {
+
+
+        <div>
+            <h3>@item.Title - @item.Member.Username -- <a href="@Url.Action("NewsDetail","Site", new { ID = item.ID })">Yorum Yap</a></h3>
+            <p>@item.Spot</p>
+            <div class="habericerik">
+
+                @Html.Raw(item.Content)
+            </div>
+
+
+        </div>
+    }
+</body>
+</html>

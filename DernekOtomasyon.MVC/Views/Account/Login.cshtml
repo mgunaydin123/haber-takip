@@ -1,0 +1,85 @@
+﻿
+@{
+    Layout = null;
+}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Mouldifi - A fully responsive, HTML5 based admin theme">
+    <meta name="keywords" content="Responsive, HTML5, admin theme, business, professional, Mouldifi, web design, CSS3">
+    <title>HABER MERKEZİ GİRİŞ</title>
+    <!-- Site favicon -->
+    <link rel='shortcut icon' type='image/x-icon' href='images/favicon.ico' />
+    <!-- /site favicon -->
+    <!-- Entypo font stylesheet -->
+    <link href="@ViewBag.Path/css/entypo.css" rel="stylesheet">
+    <!-- /entypo font stylesheet -->
+    <!-- Font awesome stylesheet -->
+    <link href="@ViewBag.Path/css/font-awesome.min.css" rel="stylesheet">
+    <!-- /font awesome stylesheet -->
+    <!-- CSS3 Animate It Plugin Stylesheet -->
+    <link href="@ViewBag.Path/css/plugins/css3-animate-it-plugin/animations.css" rel="stylesheet">
+    <!-- /css3 animate it plugin stylesheet -->
+    <!-- Bootstrap stylesheet min version -->
+    <link href="@ViewBag.Path/css/bootstrap.min.css" rel="stylesheet">
+    <!-- /bootstrap stylesheet min version -->
+    <!-- Mouldifi core stylesheet -->
+    <link href="@ViewBag.Path/css/mouldifi-core.css" rel="stylesheet">
+    <!-- /mouldifi core stylesheet -->
+
+    <link href="@ViewBag.Path/css/mouldifi-forms.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="js/html5shiv.min.js"></script>
+          <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body class="login-page">
+
+
+    <div class="login-pag-inner">
+        @if (Session["Error"] != null)
+        {
+            <h1>@Session["Error"].ToString()</h1>
+        }
+        <div class="animatedParent animateOnce z-index-50">
+            <div class="login-container animated growIn slower">
+                <div class="login-branding">
+                    <a>HABER MERKEZİ</a>
+                </div>
+                <div class="login-content">
+                    <h2><strong>Hoşgeldiniz</strong>, giriş yapınız</h2>
+                    <form action="@Url.Action("Login","Account")" method="post">
+                        <div class="form-group">
+                            <input type="text" name="username" placeholder="Kullanıcı Adı" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="pass" placeholder="Şifre" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block">GİRİŞ YAP</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Load JQuery-->
+    <script src="@ViewBag.Path/js/jquery.min.js"></script>
+    <!-- Load CSS3 Animate It Plugin JS -->
+    <script src="@ViewBag.Path/js/plugins/css3-animate-it-plugin/css3-animate-it.js"></script>
+    <script src="@ViewBag.Path/js/bootstrap.min.js"></script>
+</body>
+</html>
+@{
+
+    Session["Error"] = null;
+}

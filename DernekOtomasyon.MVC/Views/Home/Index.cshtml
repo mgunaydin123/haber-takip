@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="row">
+
+
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary4">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-shopping-cart fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@ViewBag.TotalCount</div>
+                        <div>Tüm Haberler</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">Tüm Haberler</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary5">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-support fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">0</div>
+                        <div>Yaklaşan Etkinler</div>
+                    </div>
+                </div>
+            </div>
+            <a href="#">
+                <div class="panel-footer">
+                    <span class="pull-left">Tüm Yaklaşan Etkinlikler</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary6">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-comments fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">0</div>
+                        <div>Onay Bekleyen Yorumlar</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("Comments", "Product", new { Statu = 0 })">
+                <div class="panel-footer">
+                    <span class="pull-left">Tüm Onay Bekleyen Yorumlar</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary7">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-paper-plane fa-3x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">0</div>
+                        <div>Yönetciler</div>
+                    </div>
+                </div>
+            </div>
+            <a href="@Url.Action("TransferNotification", "Order")">
+                <div class="panel-footer">
+                    <span class="pull-left">Tüm Yönetici Listesi</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+

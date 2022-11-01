@@ -1,0 +1,27 @@
+﻿@model DernekOtomasyon.MVC.Models.NewsModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    Devam etmek için kategori seçimi yapınız
+    <div>
+        <ul>
+            @foreach (var item in Model.CategoryList)
+            {
+                <li><a href="@Url.Action("CategoryNews", "Site", new { CategoryID= item.ID })">@item.CategoryName</a></li>
+            }
+
+        </ul>
+
+    </div>
+</body>
+</html>

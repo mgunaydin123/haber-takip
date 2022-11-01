@@ -1,0 +1,211 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HABER MERKEZİ OTOMASYON</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Site favicon -->
+    <link rel='shortcut icon' type='image/x-icon' href='@ViewBag.Path/images/favicon.ico' />
+    <!-- /site favicon -->
+    <!-- Entypo font stylesheet -->
+    <link href="@ViewBag.Path/css/entypo.css" rel="stylesheet">
+    <!-- /entypo font stylesheet -->
+    <!-- Font awesome stylesheet -->
+    <link href="@ViewBag.Path/css/font-awesome.min.css" rel="stylesheet">
+    <!-- /font awesome stylesheet -->
+    <!-- CSS3 Animate It Plugin Stylesheet -->
+    <link href="@ViewBag.Path/css/plugins/css3-animate-it-plugin/animations.css" rel="stylesheet">
+    <!-- /css3 animate it plugin stylesheet -->
+    <!-- Bootstrap stylesheet min version -->
+    <link href="@ViewBag.Path/css/bootstrap.min.css" rel="stylesheet">
+    <!-- /bootstrap stylesheet min version -->
+    <!-- Mouldifi core stylesheet -->
+    <link href="@ViewBag.Path/css/mouldifi-core.css" rel="stylesheet">
+    <!-- /mouldifi core stylesheet -->
+
+    <link href="@ViewBag.Path/css/mouldifi-forms.css" rel="stylesheet">
+
+    <link href="@ViewBag.Path/css/custom.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="@ViewBag.Path/js/html5shiv.min.js"></script>
+          <script src="@ViewBag.Path/js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if lte IE 8]>
+        <script src="js/plugins/flot/excanvas.min.js"></script>
+    <![endif]-->
+
+
+    <link href="@ViewBag.Path/zebradatetimepicker/dist/css/default/zebra_datepicker.min.css" rel="stylesheet" />
+
+
+
+</head>
+<body>
+
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page Sidebar -->
+        <div class="page-sidebar">
+
+            <!-- Site header  -->
+            <header class="site-header">
+                <div class="site-logo">
+                    <a href="@Url.Action("Index", "Home")">
+                        HABER TAKİP
+                    </a>
+                </div>
+                <div class="sidebar-collapse hidden-xs"><a class="sidebar-collapse-icon" href="#"><i class="icon-menu"></i></a></div>
+                <div class="sidebar-mobile-menu visible-xs"><a data-target="#side-nav" data-toggle="collapse" class="mobile-menu-icon" href="#"><i class="icon-menu"></i></a></div>
+            </header>
+            <!-- /site header -->
+            <!-- Main navigation -->
+            <ul id="side-nav" class="main-menu navbar-collapse collapse">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="icon-home"></i><span class="title">Anasayfa</span></a>
+
+                </li>
+
+
+                <li class="has-sub">
+                    <a href="#"><i class="icon-layout"></i><span class="title">HABER MERKEZİ</span></a>
+                    <ul class="nav collapse">
+
+                        <li><a href="@Url.Action("AddNews", "News")"><span class="title">Haber Ekle</span></a></li>
+                        <li><a href="@Url.Action("NewsList", "News")"><span class="title">Haber Listesi</span></a></li>
+
+
+
+                        @if (Session["OK"] == null)
+                        {
+
+                            <li><a href="@Url.Action("AdminList", "Account")"><span class="title">Redaktör Ekle</span></a></li>
+                            <li><a href="@Url.Action("AddCategory", "News")"><span class="title">Kategori Ekle</span></a></li>
+                        }
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="@Url.Action("Logout", "Home")"><i class="icon-logout"></i><span class="title">Güvenli Çıkış</span></a>
+
+                </li>
+
+            </ul>
+            <!-- /main navigation -->
+        </div>
+        <!-- /page sidebar -->
+        <!-- Main container -->
+        <div class="main-container gray-bg">
+
+            <!-- Main header -->
+            <div class="main-header row">
+                <div class="col-sm-6 col-xs-7">
+
+                    <!-- User info -->
+                    <ul class="user-info pull-left">
+                        <li class="profile-info dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
+                                <img width="23" style="width:23px!important; height:23px!important;" class="img-circle avatar" alt="" src="@ViewBag.Path/images/vy.jpg">Hoşgeldiniz @ViewBag.MemberUserName<span class="caret"></span>
+                            </a>
+
+
+                            <!-- User action menu -->
+                            <ul class="dropdown-menu">
+
+                                <li><a href="@Url.Action("PasswordEdit", "Home")"><i class="icon-lock"></i>Şifre Değiştir</a></li>
+
+                                <li class="divider"></li>
+                                @if (Convert.ToInt32(ViewBag.MemberLoginId) == 1)
+                                {
+                                    <li><a href="@Url.Action("CreateAdmin", "User")"><i class="icon-user"></i>Yönetici Oluştur</a></li>
+
+                                    <li class="divider"></li>
+
+                                }
+
+                                <li><a href="@Url.Action("Logout", "Home")"><i class="icon-logout"></i>Çıkış</a></li>
+                            </ul>
+                            <!-- /user action menu -->
+
+                        </li>
+                    </ul>
+                    <!-- /user info -->
+
+                </div>
+            </div>
+            <!-- /main header -->
+            <!-- Main content -->
+            <div class="main-content">
+                @RenderBody()
+                <!-- Footer -->
+                <footer class="animatedParent animateOnce z-index-10">
+                    <div class="footer-main animated fadeInUp slow">&copy; <strong>HABER MERKEZİ</strong></div>
+                </footer>
+                <!-- /footer -->
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /main container -->
+
+    </div>
+    <!-- /page container -->
+    <!--Load JQuery-->
+    <script src="@ViewBag.Path/js/jquery.min.js"></script>
+    <!-- Load CSS3 Animate It Plugin JS -->
+    <script src="@ViewBag.Path/js/plugins/css3-animate-it-plugin/css3-animate-it.js"></script>
+    <script src="@ViewBag.Path/js/bootstrap.min.js"></script>
+    <script src="@ViewBag.Path/js/plugins/metismenu/jquery.metisMenu.js"></script>
+    <script src="@ViewBag.Path/js/plugins/blockui-master/jquery-ui.js"></script>
+    <script src="@ViewBag.Path/js/plugins/blockui-master/jquery.blockUI.js"></script>
+
+    <script src="@ViewBag.Path/js/general.js?ver=1.1"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/zebra_pin@2.0.0/dist/zebra_pin.min.js"></script>
+    <script src="@ViewBag.Path/zebradatetimepicker/dist/zebra_datepicker.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushCss.min.js"></script>*@
+
+
+
+    <!--Float Charts-->
+
+    <script src="@ViewBag.Path/js/functions.js"></script>
+
+    @try
+    {
+        @RenderSection("footerjs")
+    }
+    catch { }
+
+    <style>
+        #side-nav li .active {
+            background-color: #00b8ce;
+            color: #FFFFFF;
+        }
+
+        #side-nav li ul li .active2 {
+            background-color: #1D1D1D;
+            color: #FFFFFF;
+        }
+    </style>
+
+</body>
+</html>
